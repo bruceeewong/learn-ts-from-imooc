@@ -118,3 +118,28 @@ interface Person {
 }
 ```
 
+### function 函数
+
+#### 函数声明
+
+```
+function add(x: number, y: number, z?: number): number {
+  return z ? x + y + z : x + y;
+}
+```
+
+#### 函数表达式
+
+```
+const add2 = function (x: number, y: number, z?: number): number {
+  return z ? x + y + z : x + y;
+};
+```
+
+```
+const add3: (x: number, y: number, z?: number) => number = add2;
+```
+
+#### 隐式类型推断
+
+在没有明确指定类型时，typescript编译器自动完成
