@@ -56,7 +56,7 @@ tsc --version
 tsc hello.ts
 ```
 
-## 数据类型
+## Typescript类型系统
 
 ### 原始类型 primitive types
 
@@ -367,6 +367,87 @@ function connect(a: string, b: string): string {
 const b: IPlus<string> = connect;
 ```
 
+### 更多
+
+#### type 别名
+
+轻量定义类型
+
+```
+type PlusType = (x: number, y: number) => number;
+function sum(x: number, y: number): number {
+  return x + y;
+}
+```
+
+对于联合类型复杂情况，使用type简化
+
+```
+type NameResolver = () => string;
+type NameOrResolver = string | NameResolver;
+function getName(n: NameOrResolver): string {
+  if (typeof n === "string") {
+    return n;
+  } else {
+    return n();
+  }
+}
+```
+
+#### 类型断言
+
+关键字 `as`：hey 编译器，我比你更确定他是这个类型
+
+两种写法：
+
+```
+<type>varaible  // 1
+variable as type  // 2
+```
+
+```
+// type assertion
+function getLength(input: string | number): number {
+  // let number = input as number
+  if ((<string>input).length) {
+    return (<string>input).length;
+  } else {
+    return input.toString().length;
+  }
+}
+```
+
+#### 使用第三方库
+
+声明库暴露的变量
+
+声明文件后缀：`.d.type`
+
+关键字: `declare`
+
+```
+// jQuery.d.ts
+declare var jQuery: (selector: string) => any;
+```
+
+告诉编译器编译当前目录下的所有文件
+
+```
+// tsconfig.json
+{
+  "include": ["**/*"]
+}
+```
+
+官方社区：[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)已经写好了很多库的声明文件：`@types/jQuery`
+
+npm 安装即可使用
+
 ## TS工具
 
 [ts-node](https://github.com/TypeStrong/ts-node): 编译+执行ts文件
+
+`@types/xxx`:官方提供库的类型描述文件
+
+官方高质量类型提供社区：[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)
+
