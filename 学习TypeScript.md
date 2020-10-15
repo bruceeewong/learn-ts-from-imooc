@@ -261,7 +261,21 @@ const enum ConstDirectoin {
 >
 > 输入和返回没有约束为同一种类型，这里需要用泛型
 
-使用时才指定类型
+使用时才指定类型：
+
+```
+function echo<T>(arg: T): T {
+  return arg;
+}
+```
+
+多泛型定义：
+
+```
+function swap<T, U>(tuple: [T, U]): [U, T] {
+  return [tuple[1], tuple[0]];
+}
+```
 
 ## TS工具
 
