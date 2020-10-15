@@ -143,3 +143,30 @@ const add3: (x: number, y: number, z?: number) => number = add2;
 #### 隐式类型推断
 
 在没有明确指定类型时，typescript编译器自动完成
+
+### 类Class
+
+类（Class）：定义了一切事物的抽象特点
+
+对象(Object)：类的实例
+
+面向对象(OOP)三大特性：封装、继承、多态
+
+#### 修饰符
+
+- `public`：外部都可以访问
+
+- `private`：只能在定义的类中访问
+
+- `protected`：不允许外部访问，允许子类访问
+- `readonly`：只读不允许修改
+
+#### 静态属性、静态方法
+
+关键字：`static`
+
+与实例无关的可以定义为静态属性
+
+## TS工具
+
+[ts-node](https://github.com/TypeStrong/ts-node): 编译+执行ts文件
