@@ -102,22 +102,6 @@ type[]  // 类型 + 数组
 let user: [string, number] = ["viking", 1];
 ```
 
-### Interface 接口
-
-- 对对象的形状“shape”进行描述
-- 对类class进行抽象
-- 鸭子类型判断 "duck typing"
-
-定义方式：
-
-```
-interface Person {
-  readonly id: number;  // 只读属性,写在属性前
-  name: string;
-  age?: number;  // 可选属性
-}
-```
-
 ### function 函数
 
 #### 函数声明
@@ -166,6 +150,118 @@ const add3: (x: number, y: number, z?: number) => number = add2;
 关键字：`static`
 
 与实例无关的可以定义为静态属性
+
+### Interface 接口
+
+- 对对象的形状“shape”进行描述
+- 对类class进行抽象
+- 鸭子类型判断 "duck typing":
+
+定义Object字段：
+
+```
+interface Person {
+  readonly id: number;  // 只读属性,写在属性前
+  name: string;
+  age?: number;  // 可选属性
+}
+```
+
+接口抽象类的属性、方法：
+
+```
+interface Radio {
+  switchRadio(trigger: boolean): void;
+}
+class Car implements Radio {
+  switchRadio() {}
+}
+class Cellphone implements Radio {
+  switchRadio() {}
+}
+```
+
+多继承接口
+
+```
+interface Radio {
+  switchRadio(trigger: boolean): void;
+}
+interface Battery {
+  checkBatteryStatus(): string;
+}
+class Cellphone implements Radio, Battery {
+  checkBatteryStatus(){}
+  switchRadio() {}
+}
+```
+
+接口间继承
+
+```
+interface RadioWithBattery extends Radio {
+  checkBatteryStatus(): string;
+}
+```
+
+### Enum 枚举
+
+```
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right,
+}
+
+console.log(Direction.Up);
+console.log(Direction[0]); // 双向映射
+```
+
+数字枚举
+
+```
+enum DirectionNum {
+  Up = 10,
+  Down = 11,
+  Left = 12,
+  Right = 13,
+}
+```
+
+字符串枚举
+
+```
+enum DirectionStr {
+  Up = "UP",
+  Down = "DOWN",
+  Left = "LEFT",
+  Right = "RIGHT",
+}
+```
+
+常量枚举，无双向映射，内联进所有引用
+
+```
+const enum ConstDirectoin {
+  Up = "UP",
+  Down = "DOWN",
+  Left = "LEFT",
+  Right = "RIGHT",
+}
+```
+
+## 泛型 Generics
+
+>  动机: 想要定义多类型的输入输出相同的函数，如echo
+>
+> ```
+> function echo(arg: any): any {}
+> ```
+>
+> 输入和返回没有约束为同一种类型，这里需要用泛型
+
+使用时才指定类型
 
 ## TS工具
 
