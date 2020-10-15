@@ -60,15 +60,15 @@ tsc hello.ts
 
 ### 原始类型 primitive types
 
-#### number
+- number
 
-#### boolean
+- boolean
 
-#### string
+- string
 
-#### undefined
+- undefined
 
-#### null
+- null
 
 ### 任意类型 any
 
@@ -86,5 +86,35 @@ tsc hello.ts
 
 ```
 type[]  // 类型 + 数组
+```
+
+有预定的接口
+
+- arguments 
+
+- htmlCollection
+
+#### 元组 Tuple
+
+限定数据类型和个数的数组
+
+```
+let user: [string, number] = ["viking", 1];
+```
+
+### Interface 接口
+
+- 对对象的形状“shape”进行描述
+- 对类class进行抽象
+- 鸭子类型判断 "duck typing"
+
+定义方式：
+
+```
+interface Person {
+  readonly id: number;  // 只读属性,写在属性前
+  name: string;
+  age?: number;  // 可选属性
+}
 ```
 
